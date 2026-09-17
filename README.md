@@ -1,51 +1,66 @@
-# Healthcare Patient Risk & Insights System
+# PulseRisk
 
-A portfolio-ready end-to-end healthcare analytics application built with **Streamlit + FastAPI + scikit-learn**.
+**Healthcare Patient Risk & Insights System**
 
-> **Important:** This project uses synthetic patient data and is intended for software/ML demonstration only. It is not a medical device and must not be used for clinical decision-making.
+PulseRisk is an end-to-end healthcare analytics application built with **Streamlit, FastAPI, and scikit-learn** for patient risk scoring, cohort analysis, and model-driven insights.
 
-## Why this project stands out
+> **Important:** This project uses synthetic patient data and is intended for software and machine-learning demonstration only. It is not a medical device and must not be used for clinical decision-making.
 
-This is more than a model-in-a-notebook. It demonstrates:
+## Live Demo
 
-- End-to-end ML product design
-- REST API development with FastAPI
-- Interactive Streamlit UI
+- **Live Application:** https://pulserisk-ai.streamlit.app/
+- **API Documentation:** https://pulserisk-api.onrender.com/docs
+- **Source Code:** https://github.com/HaripriyaReddyPatil/pulserisk
+
+## Overview
+
+PulseRisk combines a web interface, REST API, machine-learning pipeline, and analytics layer in a single application.
+
+Key capabilities include:
+
 - Patient-level risk scoring
-- Explainable ML
-- Cohort analytics
+- REST API development with FastAPI
+- Interactive Streamlit dashboards
+- Explainable machine-learning outputs
+- Cohort-level analytics
 - Patient timeline and trend analysis
 - Data-quality monitoring
 - Audit logging
-- Production-style project structure
-- Unit tests
-- Docker support
+- Unit testing
+- Docker-based deployment support
 
 ## Key Features
 
 ### Executive Dashboard
+
+The overview dashboard provides a high-level view of the patient population, including:
+
 - Total patient count
 - High-risk patient count
-- Average risk score
-- Readmission rate
+- Average predicted risk
+- Observed readmission rate
 - Risk distribution
-- Age/risk trends
-- Top clinical risk drivers
+- Risk trends by age group
+- Global model feature importance
 
 ### Patient Explorer
-Search or select a patient and view:
+
+Users can search for or select a patient and review:
+
 - Demographics
 - Clinical profile
-- Vitals and labs
+- Vitals and laboratory values
 - Utilization history
-- Risk score
+- Predicted risk score
 - Risk category
-- Personalized risk drivers
-- Patient timeline
-- Automated care-team summary
+- Patient-specific risk drivers
+- Clinical timeline
+- Automated patient summary
 
 ### Risk Prediction
-Predict risk for a new patient using:
+
+The application can estimate 30-day readmission risk for a new patient using:
+
 - Age
 - BMI
 - Systolic blood pressure
@@ -55,33 +70,51 @@ Predict risk for a new patient using:
 - Prior admissions
 - Comorbidity count
 
-### Explainability
-Global and patient-level feature importance using a model-agnostic contribution view.
+Predictions are served through the FastAPI backend and displayed through the Streamlit frontend.
 
-### Cohort Insights
-Filter by:
+### Model Explainability
+
+PulseRisk provides both global and patient-level explanations.
+
+Global explanations show which variables contribute most to the model overall.
+
+Patient-level explanations compare individual feature values with cohort-level reference values to estimate how each factor influences the predicted risk.
+
+### Cohort Analytics
+
+Users can filter and analyze patient groups based on:
+
 - Age
 - Gender
 - Risk level
-- Diabetes
-- Hypertension
 - Readmission status
 
+The application also supports visualization of:
+
+- Age versus predicted risk
+- Risk by comorbidity burden
+- Highest-risk patients in the selected cohort
+
 ### Data Quality
-Detect:
+
+The Data Quality Center checks for:
+
 - Missing values
-- Duplicate records
-- Out-of-range values
-- Invalid categories
+- Duplicate patient records
+- Out-of-range clinical values
+- Dataset completeness
+
+These checks help ensure that patient data is suitable for downstream analytics and model inference.
 
 ### Audit Log
-Tracks application actions such as:
-- Patient viewed
-- Risk scored
-- Filter applied
-- Export requested
 
----
+The application records selected user actions for traceability, including:
+
+- Patient profile views
+- Risk predictions
+- Cohort filter actions
+
+Audit events are stored using SQLite.
 
 ## Architecture
 
@@ -89,10 +122,13 @@ Tracks application actions such as:
 Synthetic Patient Data
         |
         v
+Data Generation Pipeline
+        |
+        v
 ML Training Pipeline
         |
         v
-Saved Random Forest Model
+Random Forest Model
         |
         v
 FastAPI Backend
@@ -104,114 +140,79 @@ FastAPI Backend
         |
         v
 Streamlit Frontend
-  - Dashboard
+  - Overview
   - Patient Explorer
   - Risk Predictor
   - Cohort Analytics
   - Data Quality
   - Audit Log
-```
+  - About
+  
+  ## Tech Stack
 
----
+### Frontend
 
-## Tech Stack
-
-**Frontend**
 - Streamlit
 - Plotly
 - Pandas
 
-**Backend**
+### Backend
+
 - FastAPI
 - Pydantic
 - Uvicorn
 
-**Machine Learning**
+### Machine Learning
+
 - scikit-learn
 - RandomForestClassifier
-- Standard preprocessing pipeline
+- Preprocessing pipeline
 - ROC-AUC evaluation
+- Feature-importance analysis
 
-**Data**
+### Data and Storage
+
 - Synthetic healthcare dataset
 - CSV
-- SQLite audit log
+- SQLite
 
----
+### Development and Deployment
 
-## Run locally
+- Git
+- GitHub
+- Docker
+- Docker Compose
+- Render
+- Streamlit Community Cloud
 
-### 1. Create virtual environment
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-Windows:
-
-```bash
-.venv\Scripts\activate
-```
-
-### 2. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Generate data and train model
-
-```bash
-python ml/generate_data.py
-python ml/train_model.py
-```
-
-### 4. Start FastAPI
-
-```bash
-uvicorn backend.main:app --reload --port 8000
-```
-
-### 5. Start Streamlit in a second terminal
-
-```bash
-streamlit run frontend/app.py
-```
-
-Open:
+## Project Structure
 
 ```text
-http://localhost:8501
-```
-
-FastAPI docs:
-
-```text
-http://localhost:8000/docs
-```
-
----
-
-## Resume bullet examples
-
-- Built an end-to-end healthcare risk analytics platform using Streamlit, FastAPI, scikit-learn, and Plotly to score patient risk and surface cohort-level insights.
-- Developed a Random Forest risk model with reusable preprocessing pipelines, REST-based inference, evaluation metrics, and feature-level explainability.
-- Designed an interactive clinical dashboard with patient timelines, cohort filters, data-quality monitoring, audit logging, and automated patient summaries.
-- Implemented production-style architecture with modular frontend/backend services, testing, Docker support, and synthetic healthcare data for privacy-safe deployment.
-
----
-
-## Future Enhancements
-
-- PostgreSQL
-- JWT authentication
-- Role-based access control
-- MLflow experiment tracking
-- SHAP explainability
-- FHIR ingestion
-- LLM-generated care summaries
-- CI/CD with GitHub Actions
-- AWS/Azure deployment
-- Drift monitoring
-- Model versioning
+pulserisk/
+├── backend/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── schemas.py
+│   └── services.py
+│
+├── frontend/
+│   ├── __init__.py
+│   └── app.py
+│
+├── ml/
+│   ├── generate_data.py
+│   ├── train_model.py
+│   ├── risk_model.joblib
+│   └── metrics.json
+│
+├── data/
+│   └── patients.csv
+│
+├── tests/
+│   └── test_api.py
+│
+├── Dockerfile.api
+├── Dockerfile.streamlit
+├── docker-compose.yml
+├── requirements.txt
+└── README.md
