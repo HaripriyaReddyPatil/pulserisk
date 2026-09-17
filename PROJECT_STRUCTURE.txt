@@ -1,0 +1,21 @@
+healthcare_patient_risk_insights/
+├── backend/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── schemas.py
+│   └── services.py
+├── frontend/
+│   ├── __init__.py
+│   └── app.py
+├── ml/
+│   ├── generate_data.py
+│   └── train_model.py
+├── data/
+├── tests/
+│   └── test_api.py
+├── .gitignore
+├── Dockerfile.api
+├── Dockerfile.streamlit
+├── docker-compose.yml
+├── requirements.txt
+└── README.md
