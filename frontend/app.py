@@ -16,7 +16,10 @@ DATA_PATH = BASE / "data" / "patients.csv"
 MODEL_PATH = BASE / "ml" / "risk_model.joblib"
 METRICS_PATH = BASE / "ml" / "metrics.json"
 AUDIT_DB = BASE / "data" / "audit.db"
-API_URL = os.getenv("API_URL", "http://localhost:8000")
+API_URL = st.secrets.get(
+    "API_URL",
+    os.getenv("API_URL", "http://localhost:8000")
+)
 
 FEATURES = [
     "age", "bmi", "systolic_bp", "hba1c", "ldl",
