@@ -38,7 +38,7 @@ FEATURE_LABELS = {
 }
 
 st.set_page_config(
-    page_title="PulseRisk AI",
+    page_title="PulseRisk",
     page_icon="🩺",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -292,11 +292,11 @@ def summary_text(row, prob):
         driver_text = ", ".join(drivers[:4])
 
     return (
-        f"This synthetic patient is currently categorized as **{risk} risk** "
-        f"with an estimated **{prob*100:.1f}%** 30-day readmission probability. "
-        f"Notable factors include {driver_text}. "
-        f"This output is a portfolio demonstration and is not clinical guidance."
-    )
+    f"This synthetic patient is currently categorized as **{risk} risk** "
+    f"with an estimated **{prob*100:.1f}%** 30-day readmission probability. "
+    f"Notable factors include {driver_text}. "
+    f"This estimate is based on the available patient features and is not intended as clinical guidance."
+)
 
 if not DATA_PATH.exists() or not MODEL_PATH.exists():
     st.error(
@@ -310,7 +310,7 @@ model = load_model()
 scored_df = score_rows(df, model)
 
 with st.sidebar:
-    st.markdown("## 🩺 PulseRisk AI")
+    st.markdown("## 🩺 PulseRisk")
     st.caption("Patient Risk & Insights Platform")
     st.divider()
 
@@ -430,13 +430,6 @@ if page == "Overview":
         height=420,
     )
     st.plotly_chart(fig, use_container_width=True)
-
-    st.markdown("""
-    <div class="insight-box">
-    <b>Portfolio value:</b> this landing page shows product thinking, ML inference,
-    analytics, data visualization, and application design — not just a notebook model.
-    </div>
-    """, unsafe_allow_html=True)
 
 elif page == "Patient Explorer":
     st.title("Patient Explorer")
@@ -681,8 +674,7 @@ elif page == "Cohort Analytics":
 
 elif page == "Data Quality":
     st.title("Data Quality Center")
-    st.caption("A production-minded project should show what happens before model inference.")
-
+    st.caption("Review completeness, duplicates, and clinical range checks before analysis.")
     total_missing = int(df.isna().sum().sum())
     duplicate_rows = int(df.duplicated(subset=["patient_id"]).sum())
 
@@ -734,35 +726,39 @@ elif page == "Audit Log":
         st.rerun()
 
 elif page == "About":
-    st.title("About the Project")
+    st.title("About PulseRisk")
+
     st.markdown("""
-### What problem does it solve?
+### Overview
 
-Healthcare teams often have patient data spread across tables, reports, and isolated systems.
-This application demonstrates how a unified analytics layer can:
+PulseRisk is a patient risk analytics platform that combines machine learning,
+interactive dashboards, and API-based prediction services.
 
-- identify higher-risk patients,
-- explain model predictions,
-- analyze population-level patterns,
-- inspect patient history,
-- monitor data quality,
-- and expose ML predictions through an API.
+The system provides:
 
-### Why it is portfolio-worthy
+- patient-level risk scoring,
+- risk factor explanations,
+- cohort-level analytics,
+- patient history review,
+- data-quality monitoring,
+- and REST API access for model predictions.
 
-The strongest part of this project is **system integration**. It combines:
+### Technology
 
-1. data generation and preprocessing,
-2. machine-learning training,
-3. backend APIs,
-4. frontend product design,
-5. explainability,
-6. monitoring,
-7. testing,
-8. containerization.
+PulseRisk is built with Streamlit, FastAPI, scikit-learn, Pandas,
+Plotly, SQLite, and Docker.
 
-### Clinical safety note
+### Data
 
-This application is intentionally built with synthetic data and is **not intended for diagnosis,
-treatment, triage, or any real clinical decision-making**.
+The application uses synthetic patient data created for demonstration
+and development purposes.
+
+### Clinical safety
+
+PulseRisk is not intended for diagnosis, treatment, triage,
+or real-world clinical decision-making.
 """)
+
+
+
+
