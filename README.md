@@ -12,6 +12,23 @@ PulseRisk is an end-to-end healthcare analytics application built with **Streaml
 - **API Documentation:** https://pulserisk-api.onrender.com/docs
 - **Source Code:** https://github.com/HaripriyaReddyPatil/pulserisk
 
+## Screenshots
+
+### Overview
+![Overview](screenshots/overview.png)
+
+### Patient Explorer
+![Patient Explorer](screenshots/patient-explorer.png)
+
+### Risk Predictor
+![Risk Predictor](screenshots/risk-predictor.png)
+
+### Cohort Analytics
+![Cohort Analytics](screenshots/cohort-analytics.png)
+
+### API Documentation
+![API Documentation](screenshots/api-docs.png)
+
 ## Overview
 
 PulseRisk combines a web interface, REST API, machine-learning pipeline, and analytics layer in a single application.
