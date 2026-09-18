@@ -1,0 +1,14 @@
+{
+  "roc_auc": 0.8202,
+  "recommended_threshold": 0.55,
+  "precision_at_recommended_threshold": 0.3467,
+  "recall_at_recommended_threshold": 0.7027,
+  "f1_at_recommended_threshold": 0.4643,
+  "confusion_matrix": {
+    "true_negative": 222,
+    "false_positive": 49,
+    "false_negative": 11,
+    "true_positive": 26
+  },
+  "test_records": 308
+}

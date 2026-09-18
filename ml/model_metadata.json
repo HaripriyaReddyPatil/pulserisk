@@ -1,0 +1,24 @@
+{
+  "project": "PulseRisk",
+  "model_version": "1.1.0",
+  "selected_model": "logistic_regression",
+  "selection_metric": "roc_auc",
+  "decision_threshold": 0.5,
+  "features": [
+    "age",
+    "bmi",
+    "systolic_bp",
+    "hba1c",
+    "ldl",
+    "length_of_stay",
+    "prior_admissions",
+    "comorbidity_count"
+  ],
+  "target": "readmitted_30d",
+  "training_records": 1092,
+  "testing_records": 308,
+  "total_records": 1400,
+  "random_state": 42,
+  "test_size": 0.22,
+  "trained_at_utc": "2026-09-18T03:57:56.227515+00:00"
+}

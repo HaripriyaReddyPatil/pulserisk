@@ -1,0 +1,156 @@
+{
+  "model_type": "LogisticRegression",
+  "interpretation": "Positive coefficients increase predicted readmission risk while negative coefficients decrease predicted risk. Patient-level contributions are calculated after preprocessing.",
+  "global_feature_effects": [
+    {
+      "feature": "age",
+      "coefficient": 0.7355,
+      "direction": "increases risk"
+    },
+    {
+      "feature": "systolic_bp",
+      "coefficient": 0.5567,
+      "direction": "increases risk"
+    },
+    {
+      "feature": "prior_admissions",
+      "coefficient": 0.5527,
+      "direction": "increases risk"
+    },
+    {
+      "feature": "bmi",
+      "coefficient": 0.5084,
+      "direction": "increases risk"
+    },
+    {
+      "feature": "comorbidity_count",
+      "coefficient": 0.4416,
+      "direction": "increases risk"
+    },
+    {
+      "feature": "hba1c",
+      "coefficient": 0.3961,
+      "direction": "increases risk"
+    },
+    {
+      "feature": "length_of_stay",
+      "coefficient": 0.3841,
+      "direction": "increases risk"
+    },
+    {
+      "feature": "ldl",
+      "coefficient": 0.2135,
+      "direction": "increases risk"
+    }
+  ],
+  "patient_examples": {
+    "low_risk_example": {
+      "row_index": 816,
+      "predicted_risk": 0.0034,
+      "top_contributors": [
+        {
+          "feature": "age",
+          "value": 21.0,
+          "contribution": -1.1769,
+          "effect": "pushes risk lower"
+        },
+        {
+          "feature": "bmi",
+          "value": 16.9,
+          "contribution": -0.9943,
+          "effect": "pushes risk lower"
+        },
+        {
+          "feature": "systolic_bp",
+          "value": 100.0,
+          "contribution": -0.892,
+          "effect": "pushes risk lower"
+        },
+        {
+          "feature": "prior_admissions",
+          "value": 0.0,
+          "contribution": -0.5045,
+          "effect": "pushes risk lower"
+        },
+        {
+          "feature": "comorbidity_count",
+          "value": 0.0,
+          "contribution": -0.4506,
+          "effect": "pushes risk lower"
+        }
+      ]
+    },
+    "medium_risk_example": {
+      "row_index": 1332,
+      "predicted_risk": 0.5001,
+      "top_contributors": [
+        {
+          "feature": "systolic_bp",
+          "value": 104.0,
+          "contribution": -0.7705,
+          "effect": "pushes risk lower"
+        },
+        {
+          "feature": "prior_admissions",
+          "value": 2.0,
+          "contribution": 0.7533,
+          "effect": "pushes risk higher"
+        },
+        {
+          "feature": "comorbidity_count",
+          "value": 3.0,
+          "contribution": 0.7136,
+          "effect": "pushes risk higher"
+        },
+        {
+          "feature": "length_of_stay",
+          "value": 6.5,
+          "contribution": 0.29,
+          "effect": "pushes risk higher"
+        },
+        {
+          "feature": "age",
+          "value": 49.0,
+          "contribution": -0.1952,
+          "effect": "pushes risk lower"
+        }
+      ]
+    },
+    "high_risk_example": {
+      "row_index": 339,
+      "predicted_risk": 0.9992,
+      "top_contributors": [
+        {
+          "feature": "comorbidity_count",
+          "value": 7.0,
+          "contribution": 2.2659,
+          "effect": "pushes risk higher"
+        },
+        {
+          "feature": "prior_admissions",
+          "value": 4.0,
+          "contribution": 2.0111,
+          "effect": "pushes risk higher"
+        },
+        {
+          "feature": "length_of_stay",
+          "value": 13.8,
+          "contribution": 1.2614,
+          "effect": "pushes risk higher"
+        },
+        {
+          "feature": "age",
+          "value": 87.0,
+          "contribution": 1.1371,
+          "effect": "pushes risk higher"
+        },
+        {
+          "feature": "systolic_bp",
+          "value": 148.0,
+          "contribution": 0.5667,
+          "effect": "pushes risk higher"
+        }
+      ]
+    }
+  }
+}

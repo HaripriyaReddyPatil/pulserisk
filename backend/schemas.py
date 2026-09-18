@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 
+
 class PatientFeatures(BaseModel):
     age: int = Field(ge=18, le=100)
     bmi: float = Field(ge=10, le=70)
@@ -10,8 +11,10 @@ class PatientFeatures(BaseModel):
     prior_admissions: int = Field(ge=0, le=30)
     comorbidity_count: int = Field(ge=0, le=20)
 
+
 class PredictionResponse(BaseModel):
     risk_probability: float
     risk_percent: float
     risk_level: str
+    model_type: str
     top_risk_drivers: list[dict]
