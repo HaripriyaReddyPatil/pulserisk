@@ -1,6 +1,3 @@
-cd ~/pulserisk
-
-cat > README.md <<'EOF'
 # PulseRisk
 
 ## Explainable Patient Readmission Risk & Analytics Platform
@@ -802,10 +799,3 @@ GitHub: https://github.com/HaripriyaReddyPatil
 PulseRisk is an educational and portfolio project built using synthetic patient data.
 
 It must not be used to make healthcare, medical, diagnostic, treatment, triage, or patient-management decisions.
-EOF
-
-echo ""
-echo "README.md updated successfully."
-echo ""
-echo "Model Performance screenshot references:"
-grep -n "model-performance" README.md
